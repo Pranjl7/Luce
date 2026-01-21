@@ -31,8 +31,7 @@ function Hero() {
       textcolor: '#171717',
       h1: 'DISCOVERY',
       h2: 'Thoughtful Discovery',
-      paragraph:
-        'Explore meaningful blogs, curated by quality not algorithms.',
+      paragraph: 'Explore meaningful blogs, curated by quality not algorithms.',
       percent: 'Explore Now',
       arrowcolor: 'white',
       arrowbg: 'black',
@@ -72,9 +71,9 @@ function Hero() {
         </button>
       </div>
 
-      <div className='mt-5 flex max-w-full flex-col gap-y-2'>
+      <div className='mt-5 flex w-full flex-col gap-y-2'>
         <div className='w-full text-2xl font-bold'>Featured Pillars</div>
-        <div className='mx-auto grid w-full grid-cols-4 gap-x-5'>
+        <div className='mx-auto grid w-full grid-cols-[repeat(auto-fit,minmax(270px,1fr))] gap-x-5 gap-y-5 overflow-hidden'>
           {boxes.map((box, index) => (
             <Box key={index} {...box} />
           ))}
