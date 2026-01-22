@@ -27,10 +27,10 @@ function Sidebar({ visibility }) {
       href: '/me/profile',
     },
     {
-      svgdark: '/assets/following-dark.svg',
-      svglight: '/assets/following-light.svg',
-      title: 'Following',
-      href: '/me/following',
+      svgdark: '/assets/stats-dark.svg',
+      svglight: '/assets/stats-light.svg',
+      title: 'Stats',
+      href: '/me/stats',
     },
     {
       svgdark: '/assets/write-dark.svg',
