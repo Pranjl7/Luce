@@ -2,8 +2,7 @@ import mongoose from 'mongoose';
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const contentSchema = new mongoose.Schema({
-  topic: { type: String, required: true },
-  thumbnail: { type: String, required: true },
+  thumbnail: { type: String },
   tags: [{ type: String }],
   title: { type: String, required: true },
   content: { type: String, required: true },
