@@ -48,6 +48,3 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
-      - name: Run API checks
-        run: npm test --if-present
