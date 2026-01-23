@@ -14,7 +14,7 @@ function Box({
   const { openSignUp } = useClerk()
   return (
     <div
-      className={`flex h-fit flex-col gap-y-2 rounded-xl p-6 shadow-2xl`}
+      className={`flex h-fit flex-col gap-y-2 rounded-xl p-5 w-67.5`}
       style={{ backgroundColor: boxbg, color: textcolor }}
     >
       {arrowbg === 'black' ? (
@@ -24,7 +24,7 @@ function Box({
       )}
       <p className='text-xl font-bold'>{h2}</p>
       {arrowbg === 'black' ? (
-        <p className='text-sm font-medium tracking-tight'>{paragraph}</p>
+        <p className='text-sm font-medium tracking-tight text-black/80'>{paragraph}</p>
       ) : (
         <p className='text-sm font-medium tracking-tight text-white/70'>
           {paragraph}
