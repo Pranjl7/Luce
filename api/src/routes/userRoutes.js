@@ -6,11 +6,9 @@ import { usersync, userbookmarks, userprofile, userfollowing } from '../controll
 
 // router.get('/:emailid', requireAuth(), user);
 
-// router.post('/signup', usersignup);
-
 router.post('/sync', ClerkExpressRequireAuth(),  usersync);
 
-router.get('/library', ClerkExpressRequireAuth(), userlibrary);
+router.get('/library', ClerkExpressRequireAuth(), userbookmarks);
 
 router.get('/profile', ClerkExpressRequireAuth(), userprofile);
 
