@@ -17,7 +17,6 @@ function Contentbox() {
             alt=''
           />
           <p className='text-sm'>Pranjal Bhatt </p>
-          <img className='size-4' src='/assets/page-star.svg' alt='' />
         </div>
         <div className='flex w-full flex-col gap-y-2'>
           <h1 className='font-merriweather line-clamp-3 max-h-24 w-full overflow-hidden text-2xl font-bold tracking-tight'>
