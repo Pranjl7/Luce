@@ -5,11 +5,12 @@ const contentSchema = new mongoose.Schema({
   thumbnail: { type: String },
   tags: [{ type: String }],
   title: { type: String, required: true },
+  contentimage: { type: String },
   content: { type: String, required: true },
   likes: { type: Number, default: 0 },
   comments: [{ type: String }],
   createdat: { type: String },
-  author: { type: ObjectId, ref: 'User', required: true },
+  author: { type: ObjectId, ref: 'User' },
 });
 
 export const Content = mongoose.model('Content', contentSchema);
