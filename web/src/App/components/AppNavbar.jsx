@@ -30,7 +30,7 @@ function AppNavbar() {
           </div>
         </div>
 
-        <div className='flex w-fit items-center gap-x-12'>
+        <div className='flex w-fit items-center gap-x-10'>
           <Link to="/trending" className='text-md'>Trending</Link>
           <UserButton />
         </div>
