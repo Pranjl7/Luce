@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 });
 
 // routes
-app.use('/api/v1/home', publicRoutes);
+app.use('/api/v1/public', publicRoutes);
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/content', contentRoutes);
 
