@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Contentbox from '../components/Contentbox';
 
@@ -13,6 +13,21 @@ function Home() {
       href: '/trending',
     },
   ];
+
+  const [content, setContent] = useState([]);
+
+  useEffect(() => {
+    fetchcontent();
+  }, []);
+
+  async function fetchcontent() {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/v1/public/content`
+    );
+    const content = await response.json();
+    setContent([...content.message]);
+    console.log(content.message)
+  }
 
   return (
     <main className='scrollbar-simple relative mx-auto max-h-[90vh] max-w-208 overflow-y-auto border-r border-black/10 pr-20'>
@@ -30,9 +45,9 @@ function Home() {
         ))}
       </nav>
 
-      <Contentbox />
-      <Contentbox />
-      <Contentbox />
+      {content.map((content, index) => (
+         <Contentbox key={index} {...content}/>
+      ))}
     </main>
   );
 }
