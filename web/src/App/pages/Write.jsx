@@ -2,7 +2,7 @@ import React from 'react';
 import PublishContent from '../components/PublishContent';
 import { useState } from 'react';
 import { useAuth } from '@clerk/clerk-react';
-import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Write() {
   const [thumbnail, setThumbnail] = useState(null);
@@ -13,6 +13,7 @@ function Write() {
 
   const [visibility, setVisibility] = useState(false);
   const { getToken } = useAuth();
+  const navigate = useNavigate()
 
   async function createcontent(e) {
     e.preventDefault();
@@ -34,7 +35,7 @@ function Write() {
       const token = await getToken();
       const formdata = new FormData();
       if (thumbnail) formdata.append('thumbnail', thumbnail);
-      formdata.append('tags', tags);
+      tags.map((tag) => formdata.append('tags', tag));
       formdata.append('title', title.trim());
       if (contentimage) formdata.append('contentimage', contentimage);
       formdata.append('content', content.trim());
@@ -53,6 +54,7 @@ function Write() {
         alert(data.message);
       } else {
         alert(data.message);
+        navigate('/')
       }
     } catch (error) {
       console.error('Fetch error:', error);
@@ -118,7 +120,7 @@ function Write() {
             id='inputcontent'
             rows={1}
             value={content}
-            className='font-merriweather w-full resize-none overflow-hidden text-xl leading-8 tracking-wide outline-none placeholder:font-medium placeholder:text-black/30'
+            className='font-merriweather w-full resize-none overflow-hidden text-lg leading-8 tracking-wide text-black/80 outline-none placeholder:font-medium placeholder:text-black/30'
             placeholder='Share thoughts...'
             onChange={(e) => {
               e.target.style.height = 'auto';
