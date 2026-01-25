@@ -4,15 +4,15 @@ import ContentPageReactions from '../ui/Contentpage-Reactions';
 
 function ContentPage() {
   return (
-    <main className='mx-auto flex max-h-[90vh] overflow-auto scrollbar-simple pr-2 max-w-172 flex-col gap-y-8 pt-4'>
+    <main className='scrollbar-simple mx-auto flex max-h-[90vh] max-w-172 flex-col gap-y-8 overflow-auto pt-4 pr-2'>
       <div className='flex flex-col gap-y-7'>
         <div className='flex gap-x-2'>
-          <p className='rounded-full border border-black/20 px-3 py-1 text-sm font-medium text-black/70'>
+          <button className='rounded-full border border-black/20 px-3 py-1 text-sm font-medium text-black/70'>
             Tech
-          </p>
-          <p className='rounded-full border border-black/20 px-3 py-1 text-sm font-medium text-black/70'>
+          </button>
+          <button className='rounded-full border border-black/20 px-3 py-1 text-sm font-medium text-black/70'>
             Commerce
-          </p>
+          </button>
         </div>
         <h1
           id='titlebox'
@@ -27,12 +27,15 @@ function ContentPage() {
 
       <img
         id='content-image'
-        className='aspect-10/6 w-full object-cover object-center'
+        className='w-full object-cover object-center'
         src='https://miro.medium.com/v2/resize:fit:1100/format:webp/1*4V4IOqG27oqNgn1CTAZw-Q.png'
         alt=''
       />
 
-      <div id='contentbox' className='w-full text-xl'>
+      <div
+        id='contentbox'
+        className='font-merriweather w-full text-lg leading-8 tracking-wide text-black/80'
+      >
         We chose some of the most currently popular niches and selected several
         blog examples for each niche. We researched every blog to learn more
         about CMS'es and the themes that they're using. <br /> <br />
