@@ -17,7 +17,6 @@ export async function usersync(req, res) {
 
     const existinguser = await User.findOne({ userclerkid: clerkuserid });
 
-    console.log(userid)
     if (!existinguser) {
       await User.create({
         userclerkid: clerkuserid,
