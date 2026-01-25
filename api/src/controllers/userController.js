@@ -17,10 +17,11 @@ export async function usersync(req, res) {
 
     const existinguser = await User.findOne({ userclerkid: clerkuserid });
 
+    console.log(userid)
     if (!existinguser) {
       await User.create({
         userclerkid: clerkuserid,
-        username: userid.fullName,
+        username: userid.firstName + ' ' + userid.lastName,
         emailid: userid.emailAddresses[0].emailAddress || null,
         avatarurl: userid.imageUrl,
         lastsignedin: new Date(userid.lastSignInAt),
