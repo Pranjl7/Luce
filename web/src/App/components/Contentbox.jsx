@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import HomePageReactions from '../ui/Homepage-Reactions';
 
-function Contentbox() {
+function Contentbox({
+  thumbnail,
+  title,
+  contentimage,
+  content,
+  likes,
+  comments,
+  createdat,
+  author,
+}) {
+  const [image, setImage] = useState(false);
+
+  useEffect(() => {
+    if (thumbnail != null || contentimage != null) setImage(true);
+  }, [thumbnail, contentimage]);
+
   return (
     <Link
       to={'/contentpage'}
@@ -13,32 +28,38 @@ function Contentbox() {
         <div className='flex items-center gap-x-2'>
           <img
             className='size-5.5 rounded-full'
-            src='https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18zOElOdExZY1NmS3VzWGNNWVdtQ1VjZmtNMEIifQ?width=160'
-            alt=''
+            src={author.avatarurl}
+            alt='profile-logo'
           />
-          <p className='text-sm'>Pranjal Bhatt </p>
+          <p className='text-sm'>{author.username}</p>
         </div>
         <div className='flex w-full flex-col gap-y-2'>
           <h1 className='font-merriweather line-clamp-3 max-h-24 w-full overflow-hidden text-2xl font-bold tracking-tight'>
-            Why Backpressure Is the Real Control Plane in Distributed Systems
+            {title}
           </h1>
           <p className='text-md line-clamp-2 max-h-10 w-full overflow-hidden leading-5 font-medium text-black/70'>
-            Most distributed systems don't fail because of bugs. They fail
-            because they get overwhelmed.
+            {content}
           </p>
         </div>
 
-        <HomePageReactions />
+        <HomePageReactions
+          likes={likes}
+          comments={comments}
+          createdat={createdat}
+        />
       </div>
 
       {/* Image-side */}
-      <div className='w-[22%]'>
-        <img
-          className='aspect-16/10 w-full object-cover object-center'
-          src='https://miro.medium.com/v2/resize:fit:1100/format:webp/0*_wP-8RMyqNTprWKG'
-          alt=''
-        />
-      </div>
+      {image && (
+        <div className='w-[22%]'>
+          <img
+            loading='lazy'
+            className='aspect-16/10 w-full object-cover object-center'
+            src={thumbnail != null ? thumbnail : contentimage}
+            alt=''
+          />
+        </div>
+      )}
     </Link>
   );
 }
