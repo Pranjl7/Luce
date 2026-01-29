@@ -19,7 +19,7 @@ function AppLayout() {
     const token = await getToken();
 
     await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/v1/user/sync`,
+      `${import.meta.env.VITE_API_URL}/user/sync`,
       {},
       {
         headers: { Authorization: `Bearer ${token}` },
