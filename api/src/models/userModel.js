@@ -10,6 +10,7 @@ const userSchema = {
   following: [{ type: ObjectId, ref: 'User' }],
   lastsignedin: { type: String },
   createdat: { type: String },
+  bookmarks: [{ type: ObjectId, ref: 'Content' }],
   usercontents: [{ type: ObjectId, ref: 'Content' }],
 };
 
