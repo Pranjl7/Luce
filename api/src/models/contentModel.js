@@ -7,6 +7,7 @@ const contentSchema = new mongoose.Schema({
   title: { type: String, required: true },
   contentimage: { type: String },
   content: { type: String, required: true },
+  views: { type: Number, default: 0 },
   likes: { type: Number, default: 0 },
   comments: [{ type: String }],
   createdat: { type: String },
