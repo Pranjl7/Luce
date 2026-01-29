@@ -8,7 +8,7 @@ function AppNavbar() {
 
   return (
     <>
-      <nav className='sticky top-0 left-0 right-0 z-20 flex w-screen items-center justify-between border-b border-black/10 bg-white px-7 py-2.5'>
+      <nav className='sticky top-0 right-0 left-0 z-20 flex w-screen items-center justify-between border-b border-black/10 bg-white px-7 py-2.5'>
         <div className='flex w-fit items-center gap-x-5'>
           <button
             onClick={() => setVisibility((visibility) => !visibility)}
@@ -30,8 +30,7 @@ function AppNavbar() {
           </div>
         </div>
 
-        <div className='flex w-fit items-center gap-x-10'>
-          <Link to="/trending" className='text-md'>Trending</Link>
+        <div className='flex w-fit items-center'>
           <UserButton />
         </div>
       </nav>
