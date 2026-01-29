@@ -15,16 +15,16 @@ function Sidebar({ visibility }) {
       href: '/',
     },
     {
+      svgdark: '/assets/trending-dark.svg',
+      svglight: '/assets/trending-light.svg',
+      title: 'Trending',
+      href: '/me/trending',
+    },
+    {
       svgdark: '/assets/library-dark.svg',
       svglight: '/assets/library-light.svg',
       title: 'Bookmarks',
       href: '/me/library',
-    },
-    {
-      svgdark: '/assets/profile-dark.svg',
-      svglight: '/assets/profile-light.svg',
-      title: 'Profile',
-      href: '/me/profile',
     },
     {
       svgdark: '/assets/stats-dark.svg',
@@ -42,7 +42,7 @@ function Sidebar({ visibility }) {
 
   return (
     <div
-      className={`fixed inset-y-0 left-0 z-10 h-screen w-55 border-r border-black/10 transition-transform duration-300 ease-in-out bg-white ${mount ? '' : 'transition-none'} ${visibility ? 'translate-x-0' : '-translate-x-full'}`}
+      className={`fixed inset-y-0 left-0 z-10 h-screen w-55 border-r border-black/10 bg-white transition-transform duration-350 ease-in-out ${mount ? '' : 'transition-none'} ${visibility ? 'translate-x-0' : '-translate-x-full'}`}
     >
       <div className='mt-25 flex w-full flex-col gap-y-5'>
         {links.map((e, index) => (
