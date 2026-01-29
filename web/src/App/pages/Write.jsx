@@ -13,7 +13,7 @@ function Write() {
 
   const [visibility, setVisibility] = useState(false);
   const { getToken } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   async function createcontent(e) {
     e.preventDefault();
@@ -41,7 +41,7 @@ function Write() {
       formdata.append('content', content.trim());
 
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/v1/content/create`,
+        `${import.meta.env.VITE_API_URL}/content/create`,
         {
           method: 'POST',
           headers: { Authorization: `Bearer ${token}` },
@@ -54,7 +54,7 @@ function Write() {
         alert(data.message);
       } else {
         alert(data.message);
-        navigate('/')
+        navigate('/');
       }
     } catch (error) {
       console.error('Fetch error:', error);
@@ -110,6 +110,7 @@ function Write() {
 
           {contentimage && (
             <img
+            draggable={false}
               className='w-full object-cover object-center'
               src={URL.createObjectURL(contentimage)}
               alt='ContentImage'
