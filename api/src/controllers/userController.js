@@ -8,7 +8,7 @@ export async function usersync(req, res) {
     if (!clerkuserid) {
       res.status(404).json({
         success: false,
-        message: 'UnAuthenticated User.',
+        message: 'Unauthenticated User.',
       });
 
       return;
@@ -17,19 +17,25 @@ export async function usersync(req, res) {
 
     const existinguser = await User.findOne({ userclerkid: clerkuserid });
 
+    const signedindate = new Date(userid.lastSignInAt);
+    const signedinexactDate = signedindate.toDateString();
+
+    const createdatdate = new Date(userid.createdAt);
+    const createdatexactDate = createdatdate.toDateString();
+
     if (!existinguser) {
       await User.create({
         userclerkid: clerkuserid,
         username: userid.firstName + ' ' + userid.lastName,
         emailid: userid.emailAddresses[0].emailAddress || null,
         avatarurl: userid.imageUrl,
-        lastsignedin: new Date(userid.lastSignInAt),
-        createdat: new Date(userid.createdAt),
+        lastsignedin: signedinexactDate,
+        createdat: createdatexactDate,
       });
     } else {
       await User.updateOne(
         { userclerkid: clerkuserid },
-        { $set: { lastsignedin: new Date(userid.lastSignInAt) } },
+        { $set: { lastsignedin: signedinexactDate } },
       );
     }
 
@@ -57,14 +63,39 @@ export function userbookmarks(req, res) {
   }
 }
 
-export function userprofile(req, res) {
+export async function userstats(req, res) {
   try {
+    const clerkuserid = req.auth.userId;
+    if (!clerkuserid) {
+      res.status(404).json({
+        success: false,
+        message: 'Unauthenticated user',
+      });
+      return;
+    }
+
+    const user = await User.findOne({ userclerkid: clerkuserid })
+      .populate('usercontents')
+      .populate('followers')
+      .populate('following');
+    if (!user) {
+      res.status(404).json({
+        success: false,
+        message: 'User not found',
+      });
+      return;
+    }
+
     res.json({
       success: true,
-      message: 'User Profile',
+      message: user,
     });
   } catch (error) {
     console.log(error);
+    res.status(500).json({
+      success: false,
+      message: 'Something went wrong, plz try again',
+    });
   }
 }
 
